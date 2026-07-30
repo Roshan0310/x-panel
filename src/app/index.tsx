@@ -1,17 +1,23 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Redirect } from "expo-router";
+
+import { useAuth } from "@/context/AuthContext";
+import { Colors } from "@/theme/color";
+import { ActivityIndicator, View } from "react-native";
 
 export default function Index() {
-  return (
-    <View style={styles.container}>
-      <Text>Edit src/app/index.tsx to edit this screen.</Text>
-    </View>
+  const { token, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator size="large" color={Colors.primary} />
+      </View>
+    );
+  }
+
+  return token ? (
+    <Redirect href="/(tabs)/dashboard" />
+  ) : (
+    <Redirect href="/login" />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

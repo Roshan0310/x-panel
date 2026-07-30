@@ -1,0 +1,11 @@
+{
+  "success": true,
+  "message": "Login successful",
+  "token": "demo_auth_token_123456789",
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "profileImage": "https://i.pravatar.cc/150?img=12"
+  }
+}
