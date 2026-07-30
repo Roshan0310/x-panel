@@ -43,7 +43,7 @@ export default function LoginScreen() {
     },
   });
 
-  async function onSubmit(data: LoginFormData) {
+  const onSubmit = async (data: LoginFormData) => {
     setSubmitting(true);
     const result = await login(data.email, data.password, rememberMe);
     setSubmitting(false);
@@ -53,7 +53,7 @@ export default function LoginScreen() {
     } else {
       Alert.alert("Login Failed", result.error ?? "Something went wrong.");
     }
-  }
+  };
 
   return (
     <KeyboardAvoidingView

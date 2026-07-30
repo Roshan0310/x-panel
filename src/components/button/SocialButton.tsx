@@ -1,11 +1,11 @@
 import { Colors } from "@/theme/color";
 import React from "react";
 import {
-    StyleProp,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    ViewStyle,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 
 interface SocialButtonProps {
@@ -15,12 +15,7 @@ interface SocialButtonProps {
   style?: StyleProp<ViewStyle>;
 }
 
-export default function SocialButton({
-  title,
-  icon,
-  onPress,
-  style,
-}: SocialButtonProps) {
+const SocialButton = ({ title, icon, onPress, style }: SocialButtonProps) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -28,11 +23,10 @@ export default function SocialButton({
       style={[styles.social, style]}
     >
       {icon}
-
       <Text style={styles.textSocial}>{title}</Text>
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   base: {
@@ -91,3 +85,5 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
   },
 });
+
+export default SocialButton;

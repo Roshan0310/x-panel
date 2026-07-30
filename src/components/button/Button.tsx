@@ -1,11 +1,11 @@
 import {
-    ActivityIndicator,
-    StyleProp,
-    StyleSheet,
-    Text,
-    TextStyle,
-    TouchableOpacity,
-    ViewStyle,
+  ActivityIndicator,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
 } from "react-native";
 
 import { Colors } from "@/theme/color";
@@ -22,7 +22,7 @@ interface ButtonProps {
   textStyle?: StyleProp<TextStyle>;
 }
 
-export default function Button({
+const Button = ({
   title,
   onPress,
   variant = "primary",
@@ -30,9 +30,8 @@ export default function Button({
   disabled = false,
   style,
   textStyle,
-}: ButtonProps) {
+}: ButtonProps) => {
   const isPrimary = variant === "primary";
-
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -60,7 +59,7 @@ export default function Button({
       )}
     </TouchableOpacity>
   );
-}
+};
 
 const styles = StyleSheet.create({
   base: {
@@ -112,3 +111,5 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
   },
 });
+
+export default Button;
