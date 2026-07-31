@@ -46,9 +46,18 @@ npx expo start
 
 ## Screenshots
 
-Add screenshots of:
+### Login
 
-- Login
-- Dashboard
-- Users List
-- User Details
+![Login](./screenshots/login.jpg)
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.jpg)
+
+### Users List
+
+![Users List](./screenshots/users.jpg)
+
+### User Details
+
+![User Details](./screenshots/user-details.jpg)
