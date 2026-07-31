@@ -16,7 +16,6 @@ import { User } from "@/types";
 
 const allUsers: User[] = usersData as User[];
 
-// A single info row in the "User Information" card
 function InfoRow({
   icon,
   label,
@@ -54,7 +53,6 @@ const UserDetails = () => {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
 
-  // Find the user by ID from the local data
   const user = allUsers.find((u) => String(u.id) === id);
 
   if (!user) {
@@ -73,69 +71,73 @@ const UserDetails = () => {
 
   const avatarColor = avatarColors[user.id % avatarColors.length];
 
-  // Generate a support URL from the user's name
   const supportUrl = `https://reqres.in/#support-heading`;
 
   return (
     <SafeAreaView style={styles.safe}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        {/* ── Header bar ── */}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        {/* Header */}
         <View style={styles.headerBar}>
-          <TouchableOpacity
-            onPress={() => router.back()}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          >
+          <TouchableOpacity onPress={() => router.back()}>
             <Ionicons
               name="chevron-back"
               size={24}
               color={Colors.textPrimary}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
-            <Ionicons
-              name="ellipsis-vertical"
-              size={22}
-              color={Colors.textPrimary}
-            />
-          </TouchableOpacity>
+
+          <View style={{ width: 24 }} />
         </View>
 
-        {/* ── Hero section (lavender bg) ── */}
         <View style={styles.hero}>
-          {/* avatar */}
-          <View style={[styles.avatar, { backgroundColor: avatarColor }]}>
+          <View
+            style={[
+              styles.avatar,
+              {
+                backgroundColor: avatarColor,
+              },
+            ]}
+          >
             <Text style={styles.avatarText}>{initials}</Text>
           </View>
+
           <Text style={styles.heroName}>
             {user.firstName} {user.lastName}
           </Text>
+
           <Text style={styles.heroEmail}>{user.email}</Text>
         </View>
 
-        {/* ── User Information card ── */}
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>User Information</Text>
+        {/* card */}
+        <View style={styles.content}>
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>User Information</Text>
 
-          <InfoRow
-            icon="person-outline"
-            label="First Name"
-            value={user.firstName}
-          />
-          <InfoRow
-            icon="person-outline"
-            label="Last Name"
-            value={user.lastName}
-          />
-          <InfoRow icon="mail-outline" label="Email" value={user.email} />
-          <InfoRow
-            icon="link-outline"
-            label="Support URL"
-            value={supportUrl}
-            isLink
-          />
+            <InfoRow
+              icon="person-outline"
+              label="First Name"
+              value={user.firstName}
+            />
+
+            <InfoRow
+              icon="person-outline"
+              label="Last Name"
+              value={user.lastName}
+            />
+
+            <InfoRow icon="mail-outline" label="Email" value={user.email} />
+
+            <InfoRow
+              icon="link-outline"
+              label="Support URL"
+              value={supportUrl}
+              isLink
+            />
+          </View>
         </View>
-
-        <View style={{ height: 30 }} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -146,105 +148,123 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
   },
+
   notFound: {
     flex: 1,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
 
-  // Header bar
   headerBar: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    alignItems: "center",
+    backgroundColor: Colors.primaryLight,
+    paddingHorizontal: 20,
+    paddingTop: 12,
+    paddingBottom: 8,
+  },
+
+  hero: {
+    backgroundColor: Colors.primaryLight,
+    alignItems: "center",
+    paddingTop: 10,
+    paddingBottom: 45,
   },
 
   avatar: {
     width: 110,
     height: 110,
     borderRadius: 55,
-    backgroundColor: Colors.primary,
-    alignItems: "center",
     justifyContent: "center",
+    alignItems: "center",
     borderWidth: 4,
     borderColor: Colors.white,
   },
 
   avatarText: {
-    fontSize: 36,
+    fontSize: 34,
     fontWeight: "700",
     color: Colors.white,
   },
 
-  // Hero
-  hero: {
-    backgroundColor: Colors.primaryLight,
-    alignItems: "center",
-    paddingTop: 24,
-    paddingBottom: 32,
-  },
   heroName: {
-    marginTop: 14,
-    fontSize: 22,
+    marginTop: 16,
+    fontSize: 28,
     fontWeight: "700",
     color: Colors.textPrimary,
   },
+
   heroEmail: {
-    marginTop: 4,
-    fontSize: 14,
-    color: Colors.textLink,
+    marginTop: 6,
+    fontSize: 15,
+    color: Colors.primary,
   },
 
-  // Info card
-  card: {
-    marginHorizontal: 16,
-    marginTop: -16,
-    borderRadius: 16,
-    padding: 20,
-    shadowColor: Colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 1,
-    shadowRadius: 10,
-    elevation: 4,
+  content: {
+    flex: 1,
+    backgroundColor: Colors.white,
+    marginTop: -25,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
+    paddingTop: 30,
+    paddingHorizontal: 16,
+    paddingBottom: 30,
   },
+
+  card: {
+    backgroundColor: Colors.white,
+    borderRadius: 18,
+    padding: 20,
+
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.06,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+
   cardTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "700",
     color: Colors.textPrimary,
-    marginBottom: 16,
+    marginBottom: 18,
   },
 
-  // Info rows
   infoRow: {
     flexDirection: "row",
-    alignItems: "flex-start",
-    paddingVertical: 12,
+    paddingVertical: 14,
     borderBottomWidth: 1,
-    borderBottomColor: Colors.divider,
+    borderBottomColor: "#F1F5F9",
   },
+
   infoIcon: {
-    marginRight: 12,
-    marginTop: 2,
+    marginTop: 3,
+    marginRight: 14,
   },
+
   infoText: {
     flex: 1,
   },
+
   infoLabel: {
     fontSize: 12,
     color: Colors.textMuted,
-    marginBottom: 2,
+    marginBottom: 4,
   },
+
   infoValue: {
-    fontSize: 15,
-    color: Colors.textPrimary,
+    fontSize: 16,
     fontWeight: "500",
+    color: Colors.textPrimary,
   },
+
   infoLink: {
-    fontSize: 14,
-    color: Colors.textLink,
-    textDecorationLine: "underline",
+    fontSize: 15,
+    color: Colors.primary,
   },
 });
-
 export default UserDetails;
