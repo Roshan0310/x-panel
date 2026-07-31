@@ -5,12 +5,28 @@ import { StyleSheet, Text, View } from "react-native";
 
 const STAT_CONFIG: Record<
   number,
-  { icon: keyof typeof Ionicons.glyphMap; color: string }
+  { icon: keyof typeof Ionicons.glyphMap; color: string; change: string }
 > = {
-  1: { icon: "cart-outline", color: Colors.primary },
-  2: { icon: "cash-outline", color: Colors.statGreen },
-  3: { icon: "receipt-outline", color: Colors.statOrange },
-  4: { icon: "people-outline", color: Colors.statBlue },
+  1: {
+    icon: "cart-outline",
+    color: Colors.primary,
+    change: "+12.5%",
+  },
+  2: {
+    icon: "cash-outline",
+    color: Colors.statGreen,
+    change: "+8.2%",
+  },
+  3: {
+    icon: "receipt-outline",
+    color: Colors.statOrange,
+    change: "+15.3%",
+  },
+  4: {
+    icon: "people-outline",
+    color: Colors.statBlue,
+    change: "+10.1%",
+  },
 };
 
 interface StatCardProps {
@@ -32,6 +48,11 @@ const StatusCard = ({ stat }: StatCardProps) => {
         {stat.id <= 2 ? "$" : ""}
         {Number(stat.value).toLocaleString()}
       </Text>
+
+      <View style={{ flexDirection: "row", gap: 4 }}>
+        <Text style={styles.changeText}>{config.change}</Text>
+        <Text style={styles.changeTextWord}>from last month</Text>
+      </View>
     </View>
   );
 };
@@ -67,6 +88,16 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "700",
     color: Colors.textPrimary,
+  },
+  changeText: {
+    fontSize: 13,
+    fontWeight: "500",
+    color: Colors.statGreen,
+  },
+  changeTextWord: {
+    fontSize: 13,
+    fontWeight: "500",
+    color: Colors.textSecondary,
   },
 });
 

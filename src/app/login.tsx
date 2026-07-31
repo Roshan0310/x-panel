@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import {
   Alert,
+  Image,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -20,6 +21,7 @@ import PasswordInput from "@/components/input/PasswordInput";
 import { useAuth } from "@/context/AuthContext";
 import { Colors } from "@/theme/color";
 
+import LogoImage from "@/assets/images/android-icon-foreground.png";
 import { LoginFormData, loginSchema } from "@/validation/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -65,7 +67,7 @@ export default function LoginScreen() {
         keyboardShouldPersistTaps="handled"
       >
         <View style={styles.logoBox}>
-          <Text style={styles.logoText}>X</Text>
+          <Image source={LogoImage} style={styles.logoImage} />
         </View>
 
         <Text style={styles.appName}>X Dashboard</Text>
@@ -143,13 +145,13 @@ export default function LoginScreen() {
         <View style={styles.socialRow}>
           <SocialButton
             title="Google"
-            onPress={() => Alert.alert("Google Sign-In")}
+            onPress={() => Alert.alert("Google Sign-In", "Coming soon")}
             icon={<Text style={styles.googleG}>G</Text>}
             style={{ marginRight: 8 }}
           />
           <SocialButton
             title="Apple"
-            onPress={() => Alert.alert("Apple Sign-In")}
+            onPress={() => Alert.alert("Apple Sign-In", "Coming soon")}
             icon={
               <Ionicons
                 name="logo-apple"
@@ -162,7 +164,9 @@ export default function LoginScreen() {
 
         <View style={styles.signupRow}>
           <Text style={styles.signupText}>Don&apos;t have an account? </Text>
-          <TouchableOpacity onPress={() => Alert.alert("Sign Up")}>
+          <TouchableOpacity
+            onPress={() => Alert.alert("Sign Up", "coming soon")}
+          >
             <Text style={styles.signupLink}>Sign up</Text>
           </TouchableOpacity>
         </View>
@@ -183,16 +187,16 @@ const styles = StyleSheet.create({
     width: 72,
     height: 72,
     borderRadius: 20,
-    backgroundColor: Colors.primary,
     alignItems: "center",
     justifyContent: "center",
     alignSelf: "center",
     marginBottom: 16,
+    overflow: "hidden",
   },
-  logoText: {
-    color: Colors.white,
-    fontSize: 32,
-    fontWeight: "700",
+  logoImage: {
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
   },
   appName: {
     fontSize: 22,
