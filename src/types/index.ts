@@ -7,7 +7,7 @@ export interface User {
 }
 
 // Status Card  from dashboard.json
-export interface StatusCard {
+export interface Status {
   id: number;
   title: string;
   value: string;
