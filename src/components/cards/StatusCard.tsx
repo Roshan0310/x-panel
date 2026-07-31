@@ -7,7 +7,7 @@ const STAT_CONFIG: Record<
   number,
   { icon: keyof typeof Ionicons.glyphMap; color: string }
 > = {
-  1: { icon: "cart-outline", color: Colors.statPurple },
+  1: { icon: "cart-outline", color: Colors.primary },
   2: { icon: "cash-outline", color: Colors.statGreen },
   3: { icon: "receipt-outline", color: Colors.statOrange },
   4: { icon: "people-outline", color: Colors.statBlue },
