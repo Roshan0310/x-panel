@@ -21,7 +21,6 @@ import usersData from "../../data/users.json";
 
 const stats: Status[] = dashboardData.stats as Status[];
 const users: User[] = usersData as User[];
-// Show only 4 recent users on Dashboard
 const recentUsers = users.slice(0, 4);
 
 export default function DashboardScreen() {
@@ -32,7 +31,6 @@ export default function DashboardScreen() {
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
-        {/* ── Top bar ── */}
         <View style={styles.topBar}>
           <TouchableOpacity>
             <Ionicons
@@ -48,20 +46,15 @@ export default function DashboardScreen() {
                 size={24}
                 color={Colors.textPrimary}
               />
-              {/* Notification badge */}
               <View style={styles.badge} />
             </TouchableOpacity>
             <Avatar uri={user?.profileImage} size={38} />
           </View>
         </View>
-
-        {/* ── Greeting ── */}
         <View style={styles.greetingBox}>
           <Text style={styles.greetingSmall}>Hello,</Text>
           <Text style={styles.greetingLarge}>{userName},</Text>
         </View>
-
-        {/* ── Search bar ── */}
         <TouchableOpacity
           style={styles.searchBar}
           onPress={() => router.push("/(tabs)/users")}
@@ -70,8 +63,6 @@ export default function DashboardScreen() {
           <Ionicons name="search-outline" size={18} color={Colors.textMuted} />
           <Text style={styles.searchPlaceholder}>Search users...</Text>
         </TouchableOpacity>
-
-        {/* ── Stats grid (2×2) ── */}
         <View style={styles.statsGrid}>
           <View style={styles.statsRow}>
             <StatusCard stat={stats[0]} />
@@ -82,8 +73,6 @@ export default function DashboardScreen() {
             <StatusCard stat={stats[3]} />
           </View>
         </View>
-
-        {/* ── Recent Users ── */}
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Recent Users</Text>
           <TouchableOpacity onPress={() => router.push("/(tabs)/users")}>
@@ -100,8 +89,6 @@ export default function DashboardScreen() {
             />
           ))}
         </View>
-
-        {/* Bottom padding */}
         <View style={{ height: 20 }} />
       </ScrollView>
     </SafeAreaView>
@@ -117,8 +104,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
   },
-
-  // Top bar
   topBar: {
     flexDirection: "row",
     alignItems: "center",
@@ -142,8 +127,6 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     backgroundColor: Colors.error,
   },
-
-  // Greeting
   greetingBox: {
     marginBottom: 16,
   },
@@ -156,8 +139,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: Colors.textPrimary,
   },
-
-  // Search
   searchBar: {
     flexDirection: "row",
     alignItems: "center",
@@ -173,16 +154,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: Colors.textMuted,
   },
-
-  // Stats
   statsGrid: {
     marginBottom: 24,
   },
   statsRow: {
     flexDirection: "row",
   },
-
-  // Recent users
   sectionHeader: {
     flexDirection: "row",
     justifyContent: "space-between",

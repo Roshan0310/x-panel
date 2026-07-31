@@ -79,7 +79,6 @@ const UserDetails = () => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
       >
-        {/* Header */}
         <View style={styles.headerBar}>
           <TouchableOpacity onPress={() => router.back()}>
             <Ionicons
@@ -110,8 +109,6 @@ const UserDetails = () => {
 
           <Text style={styles.heroEmail}>{user.email}</Text>
         </View>
-
-        {/* card */}
         <View style={styles.content}>
           <View style={styles.card}>
             <Text style={styles.cardTitle}>User Information</Text>

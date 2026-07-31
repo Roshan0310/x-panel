@@ -179,8 +179,6 @@ const styles = StyleSheet.create({
     paddingTop: 60,
     paddingBottom: 40,
   },
-
-  // Logo
   logoBox: {
     width: 72,
     height: 72,
@@ -196,8 +194,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: "700",
   },
-
-  // Headings
   appName: {
     fontSize: 22,
     fontWeight: "700",
@@ -212,8 +208,6 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     marginBottom: 30,
   },
-
-  // Remember Me row
   row: {
     flexDirection: "row",
     alignItems: "center",
@@ -247,13 +241,9 @@ const styles = StyleSheet.create({
     color: Colors.primary,
     fontWeight: "600",
   },
-
-  // Login button
   loginBtn: {
     marginBottom: 20,
   },
-
-  // Divider
   dividerRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -269,8 +259,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: Colors.textMuted,
   },
-
-  // Social
   socialRow: {
     flexDirection: "row",
     marginBottom: 32,
@@ -280,8 +268,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#4285F4",
   },
-
-  // Sign Up
   signupRow: {
     flexDirection: "row",
     justifyContent: "center",

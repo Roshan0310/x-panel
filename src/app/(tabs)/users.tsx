@@ -33,7 +33,6 @@ const Users = () => {
   });
   return (
     <SafeAreaView style={styles.safe}>
-      {/* ── Header ── */}
       <View style={styles.header}>
         <TouchableOpacity
           onPress={() => router.back()}
@@ -47,8 +46,6 @@ const Users = () => {
         {/* Empty view to balance the back button */}
         <View style={styles.backButton} />
       </View>
-
-      {/* ── Search bar ── */}
       <View style={styles.searchRow}>
         <Ionicons
           name="search-outline"
@@ -66,8 +63,6 @@ const Users = () => {
           autoCapitalize="none"
         />
       </View>
-
-      {/* ── User list ── */}
       <View style={styles.listContainer}>
         <FlatList
           data={filteredUsers}
@@ -100,8 +95,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.white,
   },
-
-  // Header
   header: {
     flexDirection: "row",
     alignItems: "center",
@@ -120,8 +113,6 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: Colors.textPrimary,
   },
-
-  // Search
   searchRow: {
     flexDirection: "row",
     alignItems: "center",
@@ -141,8 +132,6 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
     padding: 0,
   },
-
-  // List
   listContainer: {
     flex: 1,
     marginHorizontal: 16,
@@ -154,8 +143,6 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 3,
   },
-
-  // Empty state
   empty: {
     alignItems: "center",
     justifyContent: "center",

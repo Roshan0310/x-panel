@@ -28,12 +28,9 @@ const Profile = () => {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.container}>
-        {/* Avatar */}
         <Avatar uri={user?.profileImage} size={80} />
         <Text style={styles.name}>{userName}</Text>
         <Text style={styles.email}>{user?.email}</Text>
-
-        {/* Logout */}
         <Button
           title="Logout"
           variant="outline"
