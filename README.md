@@ -1,6 +1,6 @@
 # X Panel
 
-X Panel is a React Native application built with **Expo** and **TypeScript** as part of a machine coding assignment.
+X Panel is a React Native application built with **Expo** and **TypeScript** .
 
 ## Features
 
